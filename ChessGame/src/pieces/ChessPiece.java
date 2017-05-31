@@ -5,8 +5,14 @@ public class ChessPiece
    private int colour;
    private String piece;
    private int[][] possibleMoves;
-   private int[][] proposedMoves;
    
+   //initalizes an instance of each chess piece
+   Knight knight = new Knight();
+   King king = new King();
+   Queen queen = new Queen();
+   Pawn pawn = new Pawn();
+   Bishop bishop  = new Bishop();
+   Rook rook = new Rook();
  
    
    /**
@@ -30,13 +36,11 @@ public class ChessPiece
    {
       //create a new arraylist of arraylists of integers
       this.possibleMoves = new int[27][2];
-      this.proposedMoves = new int[27][2];
-      
-      
-      if(getType() == "knight")
+      if(piece == "knight")
       {
-    	  proposedMoves = Knight.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = knight.allPossibleMovesForThisPiece(x, y);
       }
+      
       return this.possibleMoves;
    }
    
@@ -49,6 +53,7 @@ public class ChessPiece
 	   //return the actual chess object i.e. "rook"
       return this.piece;
    }
+   
    
    /**
    * @return the int representation of the color of this ChessPiece. With 1 representing black, and 0 representing white

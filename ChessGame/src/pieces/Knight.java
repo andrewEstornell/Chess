@@ -2,18 +2,19 @@ package pieces;
 
 import board.ChessBoard;
 
-public class Knight extends ChessBoard
+public class Knight
 {
-
+	
 	private ChessPiece[][] currentBoard;
 	
 	public int[][] allPossibleMovesForThisPiece(int x, int y)
 	{
-		currentBoard = this.getBoard();
+		ChessBoard chessBoard = new ChessBoard();
+		currentBoard = chessBoard.getBoard();
 		int maxNumbOfMoves = 27;
 		int[][] knightPossibleMoves = new int[maxNumbOfMoves][2];
 		
-		//checks for all possible moves for the knight, there is a maximum of 8 for them
+		//checks all possible moves for the knight, there is a maximum of 8 for them
 		//Leaving maxNumbOfMoves at 27 as it may intefear with he return value
 		int i = 0;
 		while(i < maxNumbOfMoves)

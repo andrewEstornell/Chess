@@ -7,7 +7,7 @@ public class ChessBoard
    private ChessPiece[][] board;
    private boolean checkmate;
    //Stores valid moves for a piece
-   private ArrayList<ArrayList<Integer>> moves;
+   private int[][] moves;
    
    
    /**
@@ -15,9 +15,9 @@ public class ChessBoard
    */
    public ChessBoard()
    {
-      this.board = new ChessPiece[7][7];
+      this.board = new ChessPiece[8][8];
       this.checkmate = false;
-      this.moves = new ArrayList<ArrayList<Integer>>();
+      this.moves = new int[27][2];
       
       /*
       When you invoke this constructor, you're going to populate the ChessPiece 2d array 'board'
@@ -71,6 +71,10 @@ public class ChessBoard
    */
    public boolean move(int x1, int y1, int x2, int y2)
    {
+	   
+	   board[x2][y2] = board[x1][y1];
+	   board[x1][y1] = null;
+	   
       /* 
       * if [x2,y2] not in board[x1,y1].getPossibleMoves(x1, y1) or board[x1,y1].getColour() == board[x2,y2].getColour()
       *     return false    
@@ -80,6 +84,8 @@ public class ChessBoard
       *     moves.append([x1,y1,x2,y2])
       *     return true
       */
+	   
+	   
       
       return true; //placeholder so we can compile
    }
