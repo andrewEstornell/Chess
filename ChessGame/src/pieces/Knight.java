@@ -21,6 +21,9 @@ public class Knight
 		int i = 0;
 		while(i < maxNumbOfMoves)
 		{
+			
+			//////this.knightPossibleMoves[][]/////
+			
 			//checks that the knights move pattern in on the baord
 			if(x - 2 >= 0 && y - 1 >= 0)
 			{
