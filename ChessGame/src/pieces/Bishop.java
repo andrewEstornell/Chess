@@ -1,5 +1,8 @@
 package pieces;
 
-public class Bishop {
+import board.ChessBoard;
+
+public class Bishop 
+{
 
 }

@@ -2,6 +2,8 @@ package pieces;
 
 import board.ChessBoard;
 
+
+
 public class Knight
 {
 	
@@ -19,54 +21,127 @@ public class Knight
 		int i = 0;
 		while(i < maxNumbOfMoves)
 		{
-			//checks that each possible knight move is on the board and is no occupied by a piece of the same colour
-			if(x - 2 >= 0 && y - 1 >= 0 && currentBoard[x - 2][y - 1].getColour() != currentBoard[x][y].getColour())
+			//checks that the knights move pattern in on the baord
+			if(x - 2 >= 0 && y - 1 >= 0)
 			{
-				knightPossibleMoves[i][0] = x - 2;
-				knightPossibleMoves[i][1] = y - 1;
-				i++;
+				//if the space is empty the knight is free to move there
+				if(currentBoard[x - 2][y - 1] == null)
+				{
+					knightPossibleMoves[i][0] = x - 2;
+					knightPossibleMoves[i][1] = y - 1;
+					i++;
+				}//othersise the knight can only move there too attack
+				else if( currentBoard[x - 2][y - 1].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x - 2;
+					knightPossibleMoves[i][1] = y - 1;
+					i++;
+				}
 			}
-			if(x - 2 >= 0 && y + 1 <= 7 && currentBoard[x - 2][y + 1].getColour() != currentBoard[x][y].getColour())
+			if(x - 2 >= 0 && y + 1 <= 7)
 			{
-				knightPossibleMoves[i][0] = x - 2;
-				knightPossibleMoves[i][1] = y + 1;
-				i++;
+				if(currentBoard[x - 2][y + 1] == null)
+				{
+					knightPossibleMoves[i][0] = x - 2;
+					knightPossibleMoves[i][1] = y + 1;
+					i++;
+				}
+				else if(currentBoard[x - 2][y + 1].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x - 2;
+					knightPossibleMoves[i][1] = y + 1;
+					i++;
+				}
 			}
-			if(x - 1 >= 0 && y - 2 >= 0 && currentBoard[x - 1][y - 2].getColour() != currentBoard[x][y].getColour())
+			if(x - 1 >= 0 && y - 2 >= 0)
 			{
-				knightPossibleMoves[i][0] = x - 1;
-				knightPossibleMoves[i][1] = y - 2;
-				i++;
+				if(currentBoard[x - 1][y - 2] == null)
+				{
+					knightPossibleMoves[i][0] = x - 1;
+					knightPossibleMoves[i][1] = y - 2;
+					i++;
+				}
+				else if(currentBoard[x - 1][y - 2].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x - 1;
+					knightPossibleMoves[i][1] = y - 2;
+					i++;
+				}
 			}
-			if(x - 1 >= 0 && y + 2 <= 7 && currentBoard[x - 1][y + 2].getColour() != currentBoard[x][y].getColour())
+			if(x - 1 >= 0 && y + 2 <= 7)
 			{
-				knightPossibleMoves[i][0] = x - 1;
-				knightPossibleMoves[i][1] = y + 2;
-				i++;
+				if(currentBoard[x - 1][y + 2] == null)
+				{
+					knightPossibleMoves[i][0] = x - 1;
+					knightPossibleMoves[i][1] = y + 2;
+					i++;
+				}
+				else if(currentBoard[x - 1][y + 2].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x - 1;
+					knightPossibleMoves[i][1] = y + 2;
+					i++;
+				}
 			}
-			if(x + 1 <= 7 && y - 2 >= 0 && currentBoard[x + 1][y - 2].getColour() != currentBoard[x][y].getColour())
+			if(x + 1 <= 7 && y - 2 >= 0)
 			{
-				knightPossibleMoves[i][0] = x + 1;
-				knightPossibleMoves[i][1] = y - 2;
-				i++;
+				if(currentBoard[x + 1][y - 2] == null)
+				{
+					knightPossibleMoves[i][0] = x + 1;
+					knightPossibleMoves[i][1] = y - 2;
+					i++;
+				}
+				else if(currentBoard[x + 1][y - 2].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x + 1;
+					knightPossibleMoves[i][1] = y - 2;
+					i++;
+				}
 			}
-			if(x + 1 <= 7 && y + 2 <= 7 && currentBoard[x + 2][y + 2].getColour() != currentBoard[x][y].getColour())
+			if(x + 1 <= 7 && y + 2 <= 7)
 			{
-				knightPossibleMoves[i][0] = x + 1;
-				knightPossibleMoves[i][1] = y + 2;
-				i++;
+				if(currentBoard[x  + 1][y + 2] == null)
+				{
+					knightPossibleMoves[i][0] = x + 1;
+					knightPossibleMoves[i][1] = y + 2;
+					i++;
+				}
+				else if(currentBoard[x + 1][y + 2].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x + 1;
+					knightPossibleMoves[i][1] = y + 2;
+					i++;
+				}
 			}
-			if(x + 2 <= 7 && y - 1 >= 0 && currentBoard[x + 2][y - 1].getColour() != currentBoard[x][y].getColour())
+			if(x + 2 <= 7 && y - 1 >= 0)
 			{
-				knightPossibleMoves[i][0] = x + 2;
-				knightPossibleMoves[i][1] = y - 1;
-				i++;
+				if(currentBoard[x + 2][y - 1] == null)
+				{
+					knightPossibleMoves[i][0] = x + 2;
+					knightPossibleMoves[i][1] = y - 1;
+					i++;
+				}
+				else if(currentBoard[x + 2][y - 1].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x + 2;
+					knightPossibleMoves[i][1] = y - 1;
+					i++;
+				}
 			}
-			if(x + 2 <= 7 && y + 1 <= 7 && currentBoard[x + 2][y + 1].getColour() != currentBoard[x][y].getColour())
+			if(x + 2 <= 7 && y + 1 <= 7)
 			{
-				knightPossibleMoves[i][0] = x + 2;
-				knightPossibleMoves[i][1] = y + 1;
-				i++;
+				if(currentBoard[x + 2][y + 1] == null)
+				{
+					knightPossibleMoves[i][0] = x + 2;
+					knightPossibleMoves[i][1] = y + 1;
+					i++;
+				}
+				else if(currentBoard[x + 2][y + 1].getColour() != currentBoard[x][y].getColour())
+				{
+					knightPossibleMoves[i][0] = x + 2;
+					knightPossibleMoves[i][1] = y + 1;
+					i++;
+				}
 			}
 			break;
 		}

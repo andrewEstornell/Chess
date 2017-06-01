@@ -15,7 +15,7 @@ public class Game
 		ChessPiece[][] mainBoard = new ChessPiece[8][8]; 
 		mainBoard = chessBoard.getBoard();
 		
-		
+		//plays chess and displays it to the user via the termial
 		while(true)
 		{
 			//prints out current state of the board
@@ -35,8 +35,10 @@ public class Game
 				}
 				System.out.print("\n");
 			}
-			//gets next move
 			
+			
+			//gets next move
+			//need a better method but this will do for now
 			int x1 = scan.nextInt();
 			int y1 = scan.nextInt();
 			

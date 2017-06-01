@@ -36,9 +36,18 @@ public class ChessPiece
    {
       //create a new arraylist of arraylists of integers
       this.possibleMoves = new int[27][2];
-      if(piece == "knight")
+      
+      
+      ///// Make sure "Piece" is capitalized/////
+      
+      
+      if(this.piece == "Knight")
       {
     	  this.possibleMoves = knight.allPossibleMovesForThisPiece(x, y);
+      }
+      else if(this.piece == "Pawn")
+      {
+    	  this.possibleMoves = pawn.allPossibleMovesForThisPiece(x, y);
       }
       
       return this.possibleMoves;
