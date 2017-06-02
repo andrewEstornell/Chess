@@ -7,12 +7,13 @@ public class ChessPiece
    private int[][] possibleMoves;
    
    //initalizes an instance of each chess piece
-   Knight knight = new Knight();
-   King king = new King();
-   Queen queen = new Queen();
-   Pawn pawn = new Pawn();
-   Bishop bishop  = new Bishop();
-   Rook rook = new Rook();
+   private Knight knight = new Knight();
+   private King king = new King();
+   private Queen queen = new Queen();
+   private Pawn pawn = new Pawn();
+   private Bishop bishop  = new Bishop();
+   private Rook rook = new Rook();
+   private EmptySpace emptySpace = new EmptySpace();
  
    
    /**
@@ -34,8 +35,7 @@ public class ChessPiece
    */
    public int[][] getPossibleMoves(int x, int y)
    {
-      //create a new arraylist of arraylists of integers
-      this.possibleMoves = new int[27][2];
+ 
       
       
       ///// Make sure "Piece" is capitalized/////
@@ -43,11 +43,11 @@ public class ChessPiece
       
       if(this.piece == "Knight")
       {
-    	  this.possibleMoves = knight.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.knight.allPossibleMovesForThisPiece(x, y);
       }
       else if(this.piece == "Pawn")
       {
-    	  this.possibleMoves = pawn.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.pawn.allPossibleMovesForThisPiece(x, y);
       }
       
       return this.possibleMoves;

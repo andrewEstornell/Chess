@@ -4,18 +4,17 @@ import java.util.Scanner;
 
 import pieces.ChessPiece;
 
-public class Game 
+public class Game extends ChessBoard
 {
+
+	public static ChessBoard chessBoard = new ChessBoard();
+	public static ChessPiece[][] mainBoard = new ChessPiece[8][8];
 	public static void main(String[] args)
 	{
-		Scanner scan = new Scanner(System.in);
-		
-		
-		ChessBoard chessBoard = new ChessBoard();
-		ChessPiece[][] mainBoard = new ChessPiece[8][8]; 
+		Scanner scan = new Scanner(System.in); 
 		mainBoard = chessBoard.getBoard();
 		
-		//plays chess and displays it to the user via the termial
+		//plays chess and displays it to the user via the terminal
 		while(true)
 		{
 			//prints out current state of the board
@@ -23,7 +22,7 @@ public class Game
 			{
 				for(int j = 0; j < 8; j++)
 				{
-					if(mainBoard[i][j] == null)
+					if(mainBoard[i][j].getColour() == -1)
 					{
 						System.out.print("   ");
 					}

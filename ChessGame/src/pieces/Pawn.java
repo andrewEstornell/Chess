@@ -4,77 +4,81 @@ import board.ChessBoard;
 
 public class Pawn
 {
-	private ChessPiece[][] currentBoard;
+	private ChessPiece[][] currentBoard;//used to check the state of board
+	private int[][] pawnPossibleMoves;//stores all possible moves for this pawn
+	private ChessBoard chessBoard;//creates a new chess board to access getBoard()
 	
 	
-	public int[][] allPossibleMovesForThisPiece(int y, int x)
+	public int[][] allPossibleMovesForThisPiece(int x, int y)
 	{
-		ChessBoard chessBoard = new ChessBoard();
-		currentBoard = chessBoard.getBoard();
-		int maxNumbOfMoves = 27;
+		this.chessBoard = new ChessBoard();
+		this.currentBoard = chessBoard.getBoard();
+		this.pawnPossibleMoves = new int[27][2];
 		
-		int[][] pawnPossibleMoves = new int[maxNumbOfMoves][2];
+		
 		int i = 0;
 		//two cases for pawn moves, since white pawns move up and black pawns move down
-		
+		System.out.println(currentBoard[x][y].getColour());
 		//white
-		if(currentBoard[x][y].getColour() == 0)
+		if(this.currentBoard[x][y].getColour() == 0)
 		{
 			//checks that the first space in front of the pawn in open
-			if(currentBoard[x][y - 1] == null)
+			if(this.currentBoard[x - 1][y].getColour() == -1)
 			{
-				pawnPossibleMoves[i][0] = x;
-				pawnPossibleMoves[i][1] = y - 1;
+				this.pawnPossibleMoves[i][0] = x - 1;
+				this.pawnPossibleMoves[i][1] = y;
 				i++;
-				if(x == 6 && currentBoard[x][y - 2] == null)
+				//if the pawn has not been moved and the first square is open, check the 2nd.
+				if(x == 6 && this.currentBoard[x - 2][y].getColour() == -1)
 				{
-					pawnPossibleMoves[i][0] = x;
-					pawnPossibleMoves[i][1] = y - 2;
+					this.pawnPossibleMoves[i][0] = x - 2;
+					this.pawnPossibleMoves[i][1] = y;
 					i++;
 				}
 			}
 			//pawn attack
-			if(currentBoard[x - 1][y - 1] != null && currentBoard[x - 1][y - 1].getColour() == 1)
+			//diagonal attack if enemy piece
+			if(this.currentBoard[x - 1][y - 1].getColour() == 1)
 			{
-				pawnPossibleMoves[i][0] = x - 1;
-				pawnPossibleMoves[i][1] = y -1;
+				this.pawnPossibleMoves[i][0] = x - 1;
+				this.pawnPossibleMoves[i][1] = y -1;
 				i++;
 			}
-			if(currentBoard[x - 1][y + 1] != null && currentBoard[x - 1][y + 1].getColour() == 1)
+			if(this.currentBoard[x - 1][y + 1].getColour() == 1)
 			{
-				pawnPossibleMoves[i][0] = x - 1;
-				pawnPossibleMoves[i][1] = y + 1;
+				this.pawnPossibleMoves[i][0] = x - 1;
+				this.pawnPossibleMoves[i][1] = y + 1;
 				i++;
 			}
 		}
 		
 		//black
-		else if(currentBoard[x][y].getColour() == 1)
+		else if(this.currentBoard[x][y].getColour() == 1)
 		{
 			//checks that the first space in front of the pawn in open
-			if(currentBoard[x][y + 1] == null)
+			if(this.currentBoard[x + 1][y].getColour() == -1)
 			{
-				pawnPossibleMoves[i][0] = x ;
-				pawnPossibleMoves[i][1] = y + 1;
+				this.pawnPossibleMoves[i][0] = x + 1;
+				this.pawnPossibleMoves[i][1] = y;
 				i++;
-				if(x == 1 && currentBoard[x][y + 2] == null)
+				if(x == 1 && this.currentBoard[x + 2][y].getColour() == -1)
 				{
-					pawnPossibleMoves[i][0] = x;
-					pawnPossibleMoves[i][1] = y + 2;
+					this.pawnPossibleMoves[i][0] = x + 2;
+					this.pawnPossibleMoves[i][1] = y;
 					i++;
 				}
 			}
 			//pawn attack
-			if(currentBoard[x + 1][y - 1] != null && currentBoard[x + 1][y - 1].getColour() == 0)
+			if(this.currentBoard[x + 1][y - 1].getColour() == 0)
 			{
-				pawnPossibleMoves[i][0] = x + 1;
-				pawnPossibleMoves[i][1] = y -1;
+				this.pawnPossibleMoves[i][0] = x + 1;
+				this.pawnPossibleMoves[i][1] = y -1;
 				i++;
 			}
-			if(currentBoard[x + 1][y + 1] != null && currentBoard[x + 1][y + 1].getColour() == 0)
+			if(this.currentBoard[x + 1][y + 1].getColour() == 0)
 			{
-				pawnPossibleMoves[i][0] = x + 1;
-				pawnPossibleMoves[i][1] = y + 1;
+				this.pawnPossibleMoves[i][0] = x + 1;
+				this.pawnPossibleMoves[i][1] = y + 1;
 				i++;
 			}
 		}
@@ -84,6 +88,6 @@ public class Pawn
 		}
 		
 		
-		return pawnPossibleMoves;
+		return this.pawnPossibleMoves;
 	}
 }
