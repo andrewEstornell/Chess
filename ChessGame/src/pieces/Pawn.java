@@ -1,6 +1,7 @@
 package pieces;
 
 import board.ChessBoard;
+import board.Game;
 
 public class Pawn
 {
@@ -11,7 +12,7 @@ public class Pawn
 	
 	public int[][] allPossibleMovesForThisPiece(int x, int y)
 	{
-		this.chessBoard = new ChessBoard();
+		this.chessBoard = Game.mainChessBoard;
 		this.currentBoard = chessBoard.getBoard();
 		this.pawnPossibleMoves = new int[27][2];
 		

@@ -1,6 +1,6 @@
 package pieces;
 
-import board.ChessBoard;
+import board.Game;
 
 
 
@@ -9,102 +9,95 @@ public class Knight
 	
 	private ChessPiece[][] currentBoard;
 	private int [][] knightPossibleMoves;
-	private ChessBoard chessBoard;
+	private int colour;
+
 	
 	public int[][] allPossibleMovesForThisPiece(int x, int y)
 	{
-		this.chessBoard = new ChessBoard();
-		this.currentBoard = chessBoard.getBoard();
+		this.currentBoard = Game.mainChessBoard.getBoard();
 		this.knightPossibleMoves = new int[27][2];
+		this.colour = this.currentBoard[x][y].getColour();
 		
-		//checks all possible moves for the knight, there is a maximum of 8 for them
-		//Leaving maxNumbOfMoves at 27 as it may intefear with he return value
-		int i = 0;
-			//////this.knightPossibleMoves[][]/////
-			System.out.println("colour is" + this.currentBoard[x][y].getColour());
-			
-			//checks that the knights move pattern in on the board
-			if(x - 2 >= 0 && y - 1 >= 0)
-			{
+		int k = 0;
+		if(x - 2 >= 0 && y - 1 >= 0)//Knight move pattern, L shape
+		{
 				
-				if(this.currentBoard[x - 2][y - 1].getColour() != this.currentBoard[x][y].getColour())
-				{
-					this.knightPossibleMoves[i][0] = x - 2;
-					this.knightPossibleMoves[i][1] = y - 1;
-					i++;
-					//printout for debugging
-					System.out.printf("%d, %d \n", x - 2, y - 1);
-				}
-			}
-			
-			if(x - 2 >= 0 && y + 1 <= 7)
+			if(this.currentBoard[x - 2][y - 1].getColour() != colour)//different colour means empty space or enemy
 			{
-				if(this.currentBoard[x - 2][y + 1].getColour() != this.currentBoard[x][y].getColour())
-				{
-					this.knightPossibleMoves[i][0] = x - 2;
-					this.knightPossibleMoves[i][1] = y + 1;
-					i++;
-					System.out.printf("%d, %d \n", x - 2, y + 1);
-				}
+				this.knightPossibleMoves[k][0] = x - 2;
+				this.knightPossibleMoves[k][1] = y - 1;
+				k++;
+				//printout for debugging
+				System.out.printf("%d, %d \n", x - 2, y - 1);
 			}
-			if(x - 1 >= 0 && y - 2 >= 0)
+		}
+		if(x - 2 >= 0 && y + 1 <= 7)
+		{
+			if(this.currentBoard[x - 2][y + 1].getColour() != colour)
 			{
-				
-				if(this.currentBoard[x - 1][y - 2].getColour() != this.currentBoard[x][y].getColour())
+				this.knightPossibleMoves[k][0] = x - 2;
+				this.knightPossibleMoves[k][1] = y + 1;
+				k++;
+				System.out.printf("%d, %d \n", x - 2, y + 1);
+			}
+		}
+		if(x - 1 >= 0 && y - 2 >= 0)
+		{	
+				if(this.currentBoard[x - 1][y - 2].getColour() != colour)
 				{
-					this.knightPossibleMoves[i][0] = x - 1;
-					this.knightPossibleMoves[i][1] = y - 2;
-					i++;
+					this.knightPossibleMoves[k][0] = x - 1;
+					this.knightPossibleMoves[k][1] = y - 2;
+					k++;
 					System.out.printf("%d, %d \n", x - 1, y - 2);
 				}
 			}
 			if(x - 1 >= 0 && y + 2 <= 7)
 			{
-				if(this.currentBoard[x - 1][y + 2].getColour() != this.currentBoard[x][y].getColour())
+				if(this.currentBoard[x - 1][y + 2].getColour() != colour)
 				{
-					this.knightPossibleMoves[i][0] = x - 1;
-					this.knightPossibleMoves[i][1] = y + 2;
-					i++;
+					this.knightPossibleMoves[k][0] = x - 1;
+					this.knightPossibleMoves[k][1] = y + 2;
+					k++;
 					System.out.printf("%d, %d \n", x - 1, y + 2);
 				}
 			}
 			if(x + 1 <= 7 && y - 2 >= 0)
 			{
-				if(this.currentBoard[x + 1][y - 2].getColour() != this.currentBoard[x][y].getColour())
+				if(this.currentBoard[x + 1][y - 2].getColour() != colour)
 				{
-					this.knightPossibleMoves[i][0] = x + 1;
-					this.knightPossibleMoves[i][1] = y - 2;
-					i++;
+					this.knightPossibleMoves[k][0] = x + 1;
+					this.knightPossibleMoves[k][1] = y - 2;
+					k++;
 					System.out.printf("%d, %d \n", x + 1, y - 2);
 				}
 			}
 			if(x + 1 <= 7 && y + 2 <= 7)
 			{
-				if(this.currentBoard[x + 1][y + 2].getColour() != this.currentBoard[x][y].getColour())
+				if(this.currentBoard[x + 1][y + 2].getColour() != colour)
 				{
-					this.knightPossibleMoves[i][0] = x + 1;
-					this.knightPossibleMoves[i][1] = y + 2;
-					i++;
+					this.knightPossibleMoves[k][0] = x + 1;
+					this.knightPossibleMoves[k][1] = y + 2;
+					k++;
 					System.out.printf("%d, %d \n", x + 1, y + 2);
 				}
 			}
 			if(x + 2 <= 7 && y - 1 >= 0)
 			{
-				if(this.currentBoard[x + 2][y - 1].getColour() != this.currentBoard[x][y].getColour())
+				if(this.currentBoard[x + 2][y - 1].getColour() != colour)
 				{
-					this.knightPossibleMoves[i][0] = x + 2;
-					this.knightPossibleMoves[i][1] = y - 1;
-					i++;
+					this.knightPossibleMoves[k][0] = x + 2;
+					this.knightPossibleMoves[k][1] = y - 1;
+					k++;
 					System.out.printf("%d, %d \n", x + 2, y - 1);
 				}
 			}
 			if(x + 2 <= 7 && y + 1 <= 7)
 			{
-				if(this.currentBoard[x + 2][y + 1].getColour() != this.currentBoard[x][y].getColour())
+				if(this.currentBoard[x + 2][y + 1].getColour() != colour)
 				{
-					this.knightPossibleMoves[i][0] = x + 2;
-					this.knightPossibleMoves[i][1] = y + 1;
-					i++;
+					this.knightPossibleMoves[k][0] = x + 2;
+					this.knightPossibleMoves[k][1] = y + 1;
+					k++;
 					System.out.printf("%d, %d \n", x + 2, y + 1);
 				}
 			}
@@ -112,4 +105,26 @@ public class Knight
 		return this.knightPossibleMoves;
 	}
 	
+	/**
+	 * Ensures that moving this piece does not result in an illegal check
+	 * @param x the x coordinate of the knight
+	 * @param y the y coordinate of the knight
+	 * @return true or false
+	 */
+	private boolean illegalDiscoverCheck(int x, int y)
+	{
+		//There is probably a better way to do this
+		
+		
+		King king = new King();//create new king to get the king position method
+		int[] positionOfKing = king.getKingPosition(this.currentBoard[x][y].getColour());//get the position of the king that has the same colour as the piece being moved
+		
+		if(positionOfKing[0] - x != 0 && positionOfKing[1] - y != 0 && !(Math.abs(positionOfKing[0] - x) == Math.abs(positionOfKing[1] - y)))//if they are not on the same row, column, or diagonal, moving this peice cannot result in an illegal discover check
+		{
+			return false;
+		}
+		
+		
+		return false;
+	}
 }

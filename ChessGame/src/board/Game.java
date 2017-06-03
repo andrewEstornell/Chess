@@ -7,12 +7,12 @@ import pieces.ChessPiece;
 public class Game extends ChessBoard
 {
 
-	public static ChessBoard chessBoard = new ChessBoard();
-	public static ChessPiece[][] mainBoard = new ChessPiece[8][8];
+	public static  ChessBoard mainChessBoard = new ChessBoard();
+	public static  ChessPiece[][] mainBoard = new ChessPiece[8][8];
 	public static void main(String[] args)
 	{
 		Scanner scan = new Scanner(System.in); 
-		mainBoard = chessBoard.getBoard();
+		mainBoard = mainChessBoard.getBoard();
 		
 		//plays chess and displays it to the user via the terminal
 		while(true)
@@ -44,7 +44,7 @@ public class Game extends ChessBoard
 			int x2 = scan.nextInt();
 			int y2 = scan.nextInt();
 			
-			chessBoard.move(x1, y1, x2, y2);
+			mainChessBoard.move(x1, y1, x2, y2);
 		}
 	}
 	

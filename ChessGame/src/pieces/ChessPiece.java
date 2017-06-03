@@ -40,14 +40,26 @@ public class ChessPiece
       
       ///// Make sure "Piece" is capitalized/////
       
-      
-      if(this.piece == "Knight")
+      //returns all possible moves for the piece selected
+      if(this.piece.compareTo("Knight") == 0)
       {
     	  this.possibleMoves = this.knight.allPossibleMovesForThisPiece(x, y);
       }
-      else if(this.piece == "Pawn")
+      else if(this.piece.compareTo("Pawn") == 0)
       {
     	  this.possibleMoves = this.pawn.allPossibleMovesForThisPiece(x, y);
+      }
+      else if(this.piece.compareTo("Rook") == 0)
+      {
+    	  this.possibleMoves = this.rook.allPossibleMovesForThisPiece(x, y);
+      }
+      /*else if(this.piece.compareTo("Queen") == 0)
+      {
+    	  this.possibleMoves = this.queen.allPossibleMovesForThisPiece(x, y);
+      }*/
+      else if(this.piece.compareTo("Bishop") == 0)
+      {
+    	  this.possibleMoves = this.bishop.allPossibleMovesForThisPiece(x, y);
       }
       
       return this.possibleMoves;
