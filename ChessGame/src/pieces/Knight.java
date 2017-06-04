@@ -104,27 +104,4 @@ public class Knight
 		
 		return this.knightPossibleMoves;
 	}
-	
-	/**
-	 * Ensures that moving this piece does not result in an illegal check
-	 * @param x the x coordinate of the knight
-	 * @param y the y coordinate of the knight
-	 * @return true or false
-	 */
-	private boolean illegalDiscoverCheck(int x, int y)
-	{
-		//There is probably a better way to do this
-		
-		
-		King king = new King();//create new king to get the king position method
-		int[] positionOfKing = king.getKingPosition(this.currentBoard[x][y].getColour());//get the position of the king that has the same colour as the piece being moved
-		
-		if(positionOfKing[0] - x != 0 && positionOfKing[1] - y != 0 && !(Math.abs(positionOfKing[0] - x) == Math.abs(positionOfKing[1] - y)))//if they are not on the same row, column, or diagonal, moving this peice cannot result in an illegal discover check
-		{
-			return false;
-		}
-		
-		
-		return false;
-	}
 }

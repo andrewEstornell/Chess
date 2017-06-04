@@ -61,6 +61,10 @@ public class ChessPiece
       {
     	  this.possibleMoves = this.bishop.allPossibleMovesForThisPiece(x, y);
       }
+      else if(this.piece.compareTo("King") == 0)
+      {
+    	  this.possibleMoves = this.king.allPossibleMovesForThisPiece(x, y);
+      }
       
       return this.possibleMoves;
    }
