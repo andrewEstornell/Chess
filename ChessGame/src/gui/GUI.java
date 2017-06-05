@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class GUI extends JFrame
 {
 	
+	private boolean wasClicked;
 	private JPanel panel = new JPanel();
 	private ChessButton buttons[][] = new ChessButton[8][8];
 	
@@ -20,7 +21,7 @@ public class GUI extends JFrame
 		setSize(700,700);
 		//does not allow the user to resize the board, may change later if we get better with scaling
 		setResizable(false);
-		
+		this.wasClicked = false;
 		//sets up an 8x8 array that we will add buttons to\
 		this.panel.setLayout(new GridLayout(8, 8));
 		
@@ -53,4 +54,21 @@ public class GUI extends JFrame
 	{
 		return this.buttons;
 	}
+	
+	public void resetClick()
+	{
+		this.wasClicked = false;
+	}
+	
+	public void click()
+	{
+		this.wasClicked = true;
+	}
+	public boolean clicked()
+	{
+		return this.wasClicked;
+	}
+	
+		
+
 }

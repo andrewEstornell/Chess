@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import board.Game;
 import pieces.ChessPiece;
 
+
 public class ChessButton extends JButton implements ActionListener
 {
-
 	//image icons
 	private ImageIcon blackBishopIcon = new ImageIcon(this.getClass().getResource("Chess_bdt60.png"));
 	private ImageIcon whiteBishopIcon = new ImageIcon(this.getClass().getResource("Chess_blt60.png"));
@@ -33,26 +33,23 @@ public class ChessButton extends JButton implements ActionListener
 	public ChessButton()
 	{
 		addActionListener(this);//gives each ChessButton the ability to read clicks are user input
+		this.userClick = new int [2];
+		this.userClick[0] = -1;
+		this.userClick[1] = -1;
 	}
 
-	private int clickNumber = 0;//even means first click, odd means 2nd click
 	public void actionPerformed(ActionEvent e) 
 	{	
-		this.userClick[0] = e.getActionCommand().charAt(1);//stores x coordinate of user click
-		this.userClick[1] = e.getActionCommand().charAt(2);//stores y coordinate of user click
-		
-		if(clickNumber % 2 == 0)
-		{
-			Game.x1 = this.userClick[0];
-			Game.y1 = this.userClick[1];		
-		}
-		else if(clickNumber % 2 == 1)
-		{
-			Game.x2 = this.userClick[0];
-			Game.y2 = this.userClick[1];
-		}
-		this.clickNumber ++;
-		
+		this.userClick[0] = (int)e.getActionCommand().charAt(0) - 48;//stores x coordinate of user click
+		this.userClick[1] = (int)e.getActionCommand().charAt(1) - 48;//stores y coordinate of user click
+		Game.newGUI.click();
+		System.out.println(this.userClick[0] + " " + userClick[1]);
+	}
+	
+	public void resetUserClick()
+	{
+		this.userClick[0] = -1;
+		this.userClick[1] = -1;
 	}
 	
 	public int[] getUserClick()

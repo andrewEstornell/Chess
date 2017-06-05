@@ -52,6 +52,68 @@ public class Game extends ChessBoard
 				}
 				System.out.print("\n");
 			}
+			x1 = -1;//reset moves variables
+			x2 = -1;
+			y1 = -1;
+			y2 = -1;
+			
+			
+			while(!newGUI.clicked())
+			{
+				Thread.sleep(300);;
+			}
+			boolean breakOut = false;//used to breakout of nested loop
+			int i = 0;
+			while(i < 8)//checks through for action lisnter change
+			{
+				int j = 0;
+				while(j < 8)
+				{
+					if(userGUI[i][j].getUserClick()[0] >= 0 && userGUI[i][j].getUserClick()[1] >= 0)
+					{
+						x1 = userGUI[i][j].getUserClick()[0];
+						y1 = userGUI[i][j].getUserClick()[1];
+						userGUI[i][j].resetUserClick();
+						breakOut = true;
+						break;
+					}
+					j++;
+				}
+				if(breakOut)
+				{
+					break;
+				}
+				i++;
+			}
+			newGUI.resetClick();
+			while(!newGUI.clicked())
+			{
+				Thread.sleep(300);
+			}
+			breakOut = false;
+			i = 0;
+			while(i < 8)//checks for second user click
+			{
+				int j = 0;
+				while(j < 8)
+				{
+					if(userGUI[i][j].getUserClick()[0] >= 0 && userGUI[i][j].getUserClick()[1] >= 0)
+					{
+						x2 = userGUI[i][j].getUserClick()[0];
+						y2 = userGUI[i][j].getUserClick()[1];
+						userGUI[i][j].resetUserClick();
+						breakOut = true;
+						break;
+					}
+					j++;
+				}
+				if(breakOut)
+				{
+					break;
+				}
+				i++;
+			}
+			newGUI.resetClick();
 			
 			
 			//gets next move
@@ -64,10 +126,10 @@ public class Game extends ChessBoard
 			int x2 = scan.nextInt();
 			int y2 = scan.nextInt();
 			*/
-			
-			
-			TimeUnit.SECONDS.sleep(10);
-			mainChessBoard.move(x1, y1, x2, y2);
+			if(x1 >= 0 && y1 >= 0 && x2 >= 0 && y2 >= 0)
+			{
+				mainChessBoard.move(x1, y1, x2, y2);
+			}
 		}
 	}
 	
