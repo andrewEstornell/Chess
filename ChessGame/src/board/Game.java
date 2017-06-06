@@ -60,7 +60,13 @@ public class Game extends ChessBoard
 			
 			while(!newGUI.clicked())
 			{
-				Thread.sleep(300);;
+				try
+				{
+					Thread.sleep(100);
+				}catch(InterruptedException ex)
+				{
+					Thread.currentThread().interrupt();
+				}
 			}
 			boolean breakOut = false;//used to breakout of nested loop
 			int i = 0;
@@ -88,7 +94,13 @@ public class Game extends ChessBoard
 			newGUI.resetClick();
 			while(!newGUI.clicked())
 			{
-				Thread.sleep(300);
+				try
+				{
+					Thread.sleep(100);
+				}catch(InterruptedException ex)
+				{
+					Thread.currentThread().interrupt();
+				}
 			}
 			breakOut = false;
 			i = 0;

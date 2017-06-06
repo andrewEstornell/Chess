@@ -13,29 +13,30 @@ public class Rook
 	{
 		
 		this.currentBoard = Game.mainChessBoard.getBoard();//gets current board state from our chess board
-		this.colour = currentBoard[x][y].getColour();//gets colour of the rook
+		this.colour = this.currentBoard[x][y].getColour();//gets colour of the rook
+		this.rookPossibleMoves = new int[27][2];
 		
 		int i = 1;//counts through board spaces
 		int k =0;//counts through rookPossibleMoves
 		
 		while(x + i <= 7)
 		{
-			if(currentBoard[x + i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(this.currentBoard[x + i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
-				rookPossibleMoves[k][0] = x + i;
-				rookPossibleMoves[k][1] = y;
+				this.rookPossibleMoves[k][0] = x + i;
+				this.rookPossibleMoves[k][1] = y;
 				i++;
 				k++;
 				continue;
 			}
-			else if (currentBoard[x + i][y].getColour() != colour)//different colour, can take, but cannot go further
+			else if (this.currentBoard[x + i][y].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
-				rookPossibleMoves[k][0] = x + i;
-				rookPossibleMoves[k][1] = y;
+				this.rookPossibleMoves[k][0] = x + i;
+				this.rookPossibleMoves[k][1] = y;
 				k++;
 				break;
 			}
-			else if(currentBoard[x + i][y].getColour() == colour)//same colour, cannot take, cannot go further
+			else if(this.currentBoard[x + i][y].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -44,25 +45,25 @@ public class Rook
 				System.out.println("ERROR: Rook 1");
 			}
 		}
-		i = 0;//reset counter
+		i = 1;//reset counter
 		while(x - i >= 0)
 		{
-			if(currentBoard[x - i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(this.currentBoard[x - i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
-				rookPossibleMoves[k][0] = x - i;
-				rookPossibleMoves[k][1] = y;
+				this.rookPossibleMoves[k][0] = x - i;
+				this.rookPossibleMoves[k][1] = y;
 				i++;
 				k++;
 				continue;
 			}
-			else if (currentBoard[x - i][y].getColour() != colour)//different colour, can take, but cannot go further
+			else if (this.currentBoard[x - i][y].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
-				rookPossibleMoves[k][0] = x - i;
-				rookPossibleMoves[k][1] = y;
+				this.rookPossibleMoves[k][0] = x - i;
+				this.rookPossibleMoves[k][1] = y;
 				k++;
 				break;
 			}
-			else if(currentBoard[x - i][y].getColour() == colour)//same colour, cannot take, cannot go further
+			else if(this.currentBoard[x - i][y].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -71,25 +72,25 @@ public class Rook
 				System.out.println("ERROR: Rook moves 2");
 			}
 		}
-		i = 0;//reset counter
+		i = 1;//reset counter
 		while(y + i <= 7)
 		{
-			if(currentBoard[x][y + i].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(this.currentBoard[x][y + i].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
-				rookPossibleMoves[k][0] = x;
-				rookPossibleMoves[k][1] = y + i;
+				this.rookPossibleMoves[k][0] = x;
+				this.rookPossibleMoves[k][1] = y + i;
 				i++;
 				k++;
 				continue;
 			}
-			else if (currentBoard[x][y + i].getColour() != colour)//different colour, can take, but cannot go further
+			else if (this.currentBoard[x][y + i].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
-				rookPossibleMoves[k][0] = x;
-				rookPossibleMoves[k][1] = y + i;
+				this.rookPossibleMoves[k][0] = x;
+				this.rookPossibleMoves[k][1] = y + i;
 				k++;
 				break;
 			}
-			else if(currentBoard[x][y + 1].getColour() == colour)//same colour, cannot take, cannot go further
+			else if(this.currentBoard[x][y + i].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -98,25 +99,25 @@ public class Rook
 				System.out.println("ERROR: Rook moves 3");
 			}
 		}
-		i = 0;//reset counter
+		i = 1;//reset counter
 		while(y - i  >= 0)
 		{
-			if(currentBoard[x][y - i].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(this.currentBoard[x][y - i].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
-				rookPossibleMoves[k][0] = x;
-				rookPossibleMoves[k][1] = y - i;
+				this.rookPossibleMoves[k][0] = x;
+				this.rookPossibleMoves[k][1] = y - i;
 				i++;
 				k++;
 				continue;
 			}
-			else if (currentBoard[x][y - i].getColour() != colour)//different colour, can take, but cannot go further
+			else if (this.currentBoard[x][y - i].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
-				rookPossibleMoves[k][0] = x;
-				rookPossibleMoves[k][1] = y - i;
+				this.rookPossibleMoves[k][0] = x;
+				this.rookPossibleMoves[k][1] = y - i;
 				k++;
 				break;
 			}
-			else if(currentBoard[x][y - i].getColour() == colour)//same colour, cannot take, cannot go further
+			else if(this.currentBoard[x][y - i].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -126,6 +127,6 @@ public class Rook
 			}
 		}
 		
-		return rookPossibleMoves;//returns array of all valid moves for the rook the user has selected
+		return this.rookPossibleMoves;//returns array of all valid moves for the rook the user has selected
 	}
 }

@@ -45,6 +45,7 @@ public class Bishop
 			{
 				break;
 			}
+			i++;
 		}
 		
 		i = 1;//reset counter
@@ -71,6 +72,7 @@ public class Bishop
 			{
 				break;
 			}
+			i++;
 		}
 		
 		i = 1;//reset counter
@@ -97,6 +99,7 @@ public class Bishop
 			{
 				break;
 			}
+			i++;
 		}
 		
 		i = 1;//reset counter
@@ -124,6 +127,7 @@ public class Bishop
 			{
 				break;
 			}
+			i++;
 		}
 		
 

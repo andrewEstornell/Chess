@@ -53,10 +53,10 @@ public class ChessPiece
       {
     	  this.possibleMoves = this.rook.allPossibleMovesForThisPiece(x, y);
       }
-      /*else if(this.piece.compareTo("Queen") == 0)
+      else if(this.piece.compareTo("Queen") == 0)
       {
     	  this.possibleMoves = this.queen.allPossibleMovesForThisPiece(x, y);
-      }*/
+      }
       else if(this.piece.compareTo("Bishop") == 0)
       {
     	  this.possibleMoves = this.bishop.allPossibleMovesForThisPiece(x, y);
