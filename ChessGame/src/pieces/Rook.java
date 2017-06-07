@@ -4,16 +4,14 @@ import board.Game;
 
 public class Rook 
 {
-	private ChessPiece[][] currentBoard;//stores current state of the board;
 	private int[][] rookPossibleMoves;//stores all valid moves for the rook
 	private int colour;//colour of the the rook
 	
 	
-	public int[][] allPossibleMovesForThisPiece(int x, int y)
+	public int[][] allPossibleMovesForThisPiece(int x, int y, ChessPiece[][] currentBoard)
 	{
 		
-		this.currentBoard = Game.mainChessBoard.getBoard();//gets current board state from our chess board
-		this.colour = this.currentBoard[x][y].getColour();//gets colour of the rook
+		this.colour = currentBoard[x][y].getColour();//gets colour of the rook
 		this.rookPossibleMoves = new int[27][2];
 		
 		int i = 1;//counts through board spaces
@@ -21,7 +19,7 @@ public class Rook
 		
 		while(x + i <= 7)
 		{
-			if(this.currentBoard[x + i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(currentBoard[x + i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
 				this.rookPossibleMoves[k][0] = x + i;
 				this.rookPossibleMoves[k][1] = y;
@@ -29,14 +27,14 @@ public class Rook
 				k++;
 				continue;
 			}
-			else if (this.currentBoard[x + i][y].getColour() != this.colour)//different colour, can take, but cannot go further
+			else if (currentBoard[x + i][y].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
 				this.rookPossibleMoves[k][0] = x + i;
 				this.rookPossibleMoves[k][1] = y;
 				k++;
 				break;
 			}
-			else if(this.currentBoard[x + i][y].getColour() == this.colour)//same colour, cannot take, cannot go further
+			else if(currentBoard[x + i][y].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -48,7 +46,7 @@ public class Rook
 		i = 1;//reset counter
 		while(x - i >= 0)
 		{
-			if(this.currentBoard[x - i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(currentBoard[x - i][y].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
 				this.rookPossibleMoves[k][0] = x - i;
 				this.rookPossibleMoves[k][1] = y;
@@ -56,14 +54,14 @@ public class Rook
 				k++;
 				continue;
 			}
-			else if (this.currentBoard[x - i][y].getColour() != this.colour)//different colour, can take, but cannot go further
+			else if (currentBoard[x - i][y].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
 				this.rookPossibleMoves[k][0] = x - i;
 				this.rookPossibleMoves[k][1] = y;
 				k++;
 				break;
 			}
-			else if(this.currentBoard[x - i][y].getColour() == this.colour)//same colour, cannot take, cannot go further
+			else if(currentBoard[x - i][y].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -75,7 +73,7 @@ public class Rook
 		i = 1;//reset counter
 		while(y + i <= 7)
 		{
-			if(this.currentBoard[x][y + i].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(currentBoard[x][y + i].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
 				this.rookPossibleMoves[k][0] = x;
 				this.rookPossibleMoves[k][1] = y + i;
@@ -83,14 +81,14 @@ public class Rook
 				k++;
 				continue;
 			}
-			else if (this.currentBoard[x][y + i].getColour() != this.colour)//different colour, can take, but cannot go further
+			else if (currentBoard[x][y + i].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
 				this.rookPossibleMoves[k][0] = x;
 				this.rookPossibleMoves[k][1] = y + i;
 				k++;
 				break;
 			}
-			else if(this.currentBoard[x][y + i].getColour() == this.colour)//same colour, cannot take, cannot go further
+			else if(currentBoard[x][y + i].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}
@@ -102,7 +100,7 @@ public class Rook
 		i = 1;//reset counter
 		while(y - i  >= 0)
 		{
-			if(this.currentBoard[x][y - i].getType().charAt(0) == 'E')//to an empty space is a valid move
+			if(currentBoard[x][y - i].getType().charAt(0) == 'E')//to an empty space is a valid move
 			{
 				this.rookPossibleMoves[k][0] = x;
 				this.rookPossibleMoves[k][1] = y - i;
@@ -110,14 +108,14 @@ public class Rook
 				k++;
 				continue;
 			}
-			else if (this.currentBoard[x][y - i].getColour() != this.colour)//different colour, can take, but cannot go further
+			else if (currentBoard[x][y - i].getColour() != this.colour)//different colour, can take, but cannot go further
 			{
 				this.rookPossibleMoves[k][0] = x;
 				this.rookPossibleMoves[k][1] = y - i;
 				k++;
 				break;
 			}
-			else if(this.currentBoard[x][y - i].getColour() == this.colour)//same colour, cannot take, cannot go further
+			else if(currentBoard[x][y - i].getColour() == this.colour)//same colour, cannot take, cannot go further
 			{
 				break;
 			}

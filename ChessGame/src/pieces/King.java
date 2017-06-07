@@ -4,19 +4,18 @@ import board.Game;
 
 public class King 
 {
-	private ChessPiece[][] currentBoard;
 	private int[][] possibleKingMoves;
 	
 	/**
 	 * 
 	 * @param x x coordinate of this king
 	 * @param y y coordinate of this king
+	 * @param currentBoard user facing board state
 	 * @return an array of all possible moves for this king
 	 */
-	public int[][] allPossibleMovesForThisPiece(int x, int y)
+	public int[][] allPossibleMovesForThisPiece(int x, int y, ChessPiece[][] currentBoard)
 	{
-		this.currentBoard = Game.mainChessBoard.getBoard();
-		int colourOfThisKing = this.currentBoard[x][y].getColour();
+		int colourOfThisKing = currentBoard[x][y].getColour();
 		int k = 0;
 		this.possibleKingMoves = new int[27][2];
 		for(int i = 0; i < 3; i++)//checks all squares around the king to see if they are valid moves
@@ -27,7 +26,7 @@ public class King
 				{
 					if(y - 1 + j >= 0 && y - 1 + j <= 7)//checks that the square next to the king is part of the board
 					{
-						if(this.currentBoard[x - 1 + i][y - 1 + j].getColour() != colourOfThisKing)
+						if(currentBoard[x - 1 + i][y - 1 + j].getColour() != colourOfThisKing)
 						{
 							this.possibleKingMoves[k][0] = x - 1 + i;
 							this.possibleKingMoves[k][1] = y - 1 + j;
@@ -49,9 +48,8 @@ public class King
 	 * @param colourOfKing colour of the king
 	 * @return true if in check, false if not in check
 	 */
-	public boolean kingIsInCheck(int colourOfKing)
+	public boolean kingIsInCheck(int colourOfKing, ChessPiece[][] currentBoard)
 	{
-		this.currentBoard = Game.mainChessBoard.getBoard();//gets the state of the current board the user is interacting with
 		int i = 1;//counter
 		
 		int x = getKingPosition(colourOfKing, currentBoard)[0];//x, y coordinate of king's current position

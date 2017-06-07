@@ -122,7 +122,7 @@ public class ChessBoard
 			   this.board[x1][y1] = new ChessPiece("EmptySpace", -1);
 			   
 			   King king = new King();
-			   if(king.kingIsInCheck(colour))//tests if the new board state has an illegal check
+			   if(king.kingIsInCheck(colour, Game.mainChessBoard.getBoard()))//tests if the new board state has an illegal check
 			   {
 				   this.board[x1][y1] = this.board[x2][y2];//if it does, it resets the move and yields false
 				   this.board[x2][y2] = tempPiece;

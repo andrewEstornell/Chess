@@ -1,5 +1,7 @@
 package pieces;
 
+import board.Game;
+
 public class ChessPiece
 {
    private int colour;
@@ -43,27 +45,27 @@ public class ChessPiece
       //returns all possible moves for the piece selected
       if(this.piece.compareTo("Knight") == 0)
       {
-    	  this.possibleMoves = this.knight.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.knight.allPossibleMovesForThisPiece(x, y, Game.mainChessBoard.getBoard());
       }
       else if(this.piece.compareTo("Pawn") == 0)
       {
-    	  this.possibleMoves = this.pawn.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.pawn.allPossibleMovesForThisPiece(x, y, Game.mainChessBoard.getBoard());
       }
       else if(this.piece.compareTo("Rook") == 0)
       {
-    	  this.possibleMoves = this.rook.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.rook.allPossibleMovesForThisPiece(x, y, Game.mainChessBoard.getBoard());
       }
       else if(this.piece.compareTo("Queen") == 0)
       {
-    	  this.possibleMoves = this.queen.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.queen.allPossibleMovesForThisPiece(x, y, Game.mainChessBoard.getBoard());
       }
       else if(this.piece.compareTo("Bishop") == 0)
       {
-    	  this.possibleMoves = this.bishop.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.bishop.allPossibleMovesForThisPiece(x, y, Game.mainChessBoard.getBoard());
       }
       else if(this.piece.compareTo("King") == 0)
       {
-    	  this.possibleMoves = this.king.allPossibleMovesForThisPiece(x, y);
+    	  this.possibleMoves = this.king.allPossibleMovesForThisPiece(x, y, Game.mainChessBoard.getBoard());
       }
       
       return this.possibleMoves;

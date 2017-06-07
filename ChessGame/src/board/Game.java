@@ -12,7 +12,7 @@ public class Game extends ChessBoard
 
 	public static GUI newGUI = new GUI();
 	public static ChessButton[][] userGUI = new ChessButton[8][8];
-	public static  ChessBoard mainChessBoard = new ChessBoard();
+	public static  ChessBoard mainChessBoard = new ChessBoard();//user facing chess board
 	public static  ChessPiece[][] mainBoard = new ChessPiece[8][8];
 	
 	

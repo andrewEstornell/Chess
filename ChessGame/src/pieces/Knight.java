@@ -7,22 +7,20 @@ import board.Game;
 public class Knight
 {
 	
-	private ChessPiece[][] currentBoard;
 	private int [][] knightPossibleMoves;
 	private int colour;
 
 	
-	public int[][] allPossibleMovesForThisPiece(int x, int y)
+	public int[][] allPossibleMovesForThisPiece(int x, int y, ChessPiece[][] currentBoard)
 	{
-		this.currentBoard = Game.mainChessBoard.getBoard();
 		this.knightPossibleMoves = new int[27][2];
-		this.colour = this.currentBoard[x][y].getColour();
+		this.colour = currentBoard[x][y].getColour();
 		
 		int k = 0;
 		if(x - 2 >= 0 && y - 1 >= 0)//Knight move pattern, L shape
 		{
 				
-			if(this.currentBoard[x - 2][y - 1].getColour() != colour)//different colour means empty space or enemy
+			if(currentBoard[x - 2][y - 1].getColour() != colour)//different colour means empty space or enemy
 			{
 				this.knightPossibleMoves[k][0] = x - 2;
 				this.knightPossibleMoves[k][1] = y - 1;
@@ -33,7 +31,7 @@ public class Knight
 		}
 		if(x - 2 >= 0 && y + 1 <= 7)
 		{
-			if(this.currentBoard[x - 2][y + 1].getColour() != colour)
+			if(currentBoard[x - 2][y + 1].getColour() != colour)
 			{
 				this.knightPossibleMoves[k][0] = x - 2;
 				this.knightPossibleMoves[k][1] = y + 1;
@@ -43,7 +41,7 @@ public class Knight
 		}
 		if(x - 1 >= 0 && y - 2 >= 0)
 		{	
-				if(this.currentBoard[x - 1][y - 2].getColour() != colour)
+				if(currentBoard[x - 1][y - 2].getColour() != colour)
 				{
 					this.knightPossibleMoves[k][0] = x - 1;
 					this.knightPossibleMoves[k][1] = y - 2;
@@ -53,7 +51,7 @@ public class Knight
 			}
 			if(x - 1 >= 0 && y + 2 <= 7)
 			{
-				if(this.currentBoard[x - 1][y + 2].getColour() != colour)
+				if(currentBoard[x - 1][y + 2].getColour() != colour)
 				{
 					this.knightPossibleMoves[k][0] = x - 1;
 					this.knightPossibleMoves[k][1] = y + 2;
@@ -63,7 +61,7 @@ public class Knight
 			}
 			if(x + 1 <= 7 && y - 2 >= 0)
 			{
-				if(this.currentBoard[x + 1][y - 2].getColour() != colour)
+				if(currentBoard[x + 1][y - 2].getColour() != colour)
 				{
 					this.knightPossibleMoves[k][0] = x + 1;
 					this.knightPossibleMoves[k][1] = y - 2;
@@ -73,7 +71,7 @@ public class Knight
 			}
 			if(x + 1 <= 7 && y + 2 <= 7)
 			{
-				if(this.currentBoard[x + 1][y + 2].getColour() != colour)
+				if(currentBoard[x + 1][y + 2].getColour() != colour)
 				{
 					this.knightPossibleMoves[k][0] = x + 1;
 					this.knightPossibleMoves[k][1] = y + 2;
@@ -83,7 +81,7 @@ public class Knight
 			}
 			if(x + 2 <= 7 && y - 1 >= 0)
 			{
-				if(this.currentBoard[x + 2][y - 1].getColour() != colour)
+				if(currentBoard[x + 2][y - 1].getColour() != colour)
 				{
 					this.knightPossibleMoves[k][0] = x + 2;
 					this.knightPossibleMoves[k][1] = y - 1;
@@ -93,7 +91,7 @@ public class Knight
 			}
 			if(x + 2 <= 7 && y + 1 <= 7)
 			{
-				if(this.currentBoard[x + 2][y + 1].getColour() != colour)
+				if(currentBoard[x + 2][y + 1].getColour() != colour)
 				{
 					this.knightPossibleMoves[k][0] = x + 2;
 					this.knightPossibleMoves[k][1] = y + 1;
