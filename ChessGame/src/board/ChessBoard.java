@@ -165,7 +165,7 @@ public class ChessBoard
    */
    public boolean isCheckmate()
    {
-      //going to get really messy
+      
       return this.checkmate; 
    }
    
