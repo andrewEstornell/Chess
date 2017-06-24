@@ -1,31 +1,44 @@
 package board;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
-
 import gui.ChessButton;
 import gui.GUI;
 import pieces.ChessPiece;
+import pieces.King;
 
 public class Game extends ChessBoard
 {
 
-	public static GUI newGUI = new GUI();
-	public static ChessButton[][] userGUI = new ChessButton[8][8];
-	public static  ChessBoard mainChessBoard = new ChessBoard();//user facing chess board
-	public static  ChessPiece[][] mainBoard = new ChessPiece[8][8];
+	public static int[][] moveList = new int[200][4];
 	
+	public static GUI gui = new GUI();
+	public static ChessButton[][] userGUI = new ChessButton[8][8];
+	
+	public static ChessBoard mainChessBoard = new ChessBoard(); // user facing chess board
+	public static ChessPiece[][] mainBoard = new ChessPiece[8][8];
+
+	public static ChessBoard testChessBoard = new ChessBoard();
+	public static ChessPiece[][] testBoard = new ChessPiece[8][8];
+	
+	
+	public static boolean blackLongCastle = true;
+	public static boolean blackShortCastle = true;
+	public static boolean whiteLongCastle = true;
+	public static boolean whiteShortCastle = true;
+
 	
 	public static int x1;
 	public static int x2;
 	public static int y1;
 	public static int y2;
 	
-	public static void main(String[] args) throws InterruptedException
+	public static void main(String[] args)
 	{
 		Scanner scan = new Scanner(System.in); 
 		mainBoard = mainChessBoard.getBoard();
-		userGUI = newGUI.getGUI();
+		userGUI = gui.getGUI();
+		
+		
 		for(int i = 0; i < 8; i++)//sets icons of all pieces
 		{
 			for(int j = 0; j < 8; j++)
@@ -58,74 +71,13 @@ public class Game extends ChessBoard
 			y2 = -1;
 			
 			
-			while(!newGUI.clicked())
-			{
-				try
-				{
-					Thread.sleep(100);
-				}catch(InterruptedException ex)
-				{
-					Thread.currentThread().interrupt();
-				}
-			}
-			boolean breakOut = false;//used to breakout of nested loop
-			int i = 0;
-			while(i < 8)//checks through for action lisnter change
-			{
-				int j = 0;
-				while(j < 8)
-				{
-					if(userGUI[i][j].getUserClick()[0] >= 0 && userGUI[i][j].getUserClick()[1] >= 0)
-					{
-						x1 = userGUI[i][j].getUserClick()[0];
-						y1 = userGUI[i][j].getUserClick()[1];
-						userGUI[i][j].resetUserClick();
-						breakOut = true;
-						break;
-					}
-					j++;
-				}
-				if(breakOut)
-				{
-					break;
-				}
-				i++;
-			}
-			newGUI.resetClick();
-			while(!newGUI.clicked())
-			{
-				try
-				{
-					Thread.sleep(100);
-				}catch(InterruptedException ex)
-				{
-					Thread.currentThread().interrupt();
-				}
-			}
-			breakOut = false;
-			i = 0;
-			while(i < 8)//checks for second user click
-			{
-				int j = 0;
-				while(j < 8)
-				{
-					if(userGUI[i][j].getUserClick()[0] >= 0 && userGUI[i][j].getUserClick()[1] >= 0)
-					{
-						x2 = userGUI[i][j].getUserClick()[0];
-						y2 = userGUI[i][j].getUserClick()[1];
-						userGUI[i][j].resetUserClick();
-						breakOut = true;
-						break;
-					}
-					j++;
-				}
-				if(breakOut)
-				{
-					break;
-				}
-				i++;
-			}
-			newGUI.resetClick();
+				int[] firstClick = gui.getMoveGUI();
+				x1 = firstClick[0];
+				y1 = firstClick[1];
+				
+				int[] secondClick = gui.getMoveGUI();
+				x2 = secondClick[0];
+				y2 = secondClick[1];
 			
 			
 			//gets next move
@@ -138,9 +90,25 @@ public class Game extends ChessBoard
 			int x2 = scan.nextInt();
 			int y2 = scan.nextInt();
 			*/
+			
+			//testChessBoard = new ChessBoard(mainBoard);
+			//testBoard = testChessBoard.getBoard();
+			King king = new King();
+			
+			int playerColour = mainBoard[x1][y1].getColour();
 			if(x1 >= 0 && y1 >= 0 && x2 >= 0 && y2 >= 0)
 			{
-				mainChessBoard.move(x1, y1, x2, y2);
+					mainChessBoard.move(x1, y1, x2, y2);
+			}
+			else
+			{
+				System.out.println("Not Valid Move On Test Board");
+			}
+			
+			if(mainChessBoard.isStalemate((playerColour + 1) % 2))
+			{
+				System.out.println("Draw");
+				break;
 			}
 		}
 	}

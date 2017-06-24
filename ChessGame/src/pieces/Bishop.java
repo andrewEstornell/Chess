@@ -1,16 +1,14 @@
 package pieces;
 
-import board.ChessBoard;
-import board.Game;
-
 public class Bishop 
 {
 	private int[][] bishopPossibleMoves;//stores all possible moves for this bishop
 	private int colour;
+	private int value;
 	
 	public int[][] allPossibleMovesForThisPiece(int x, int y, ChessPiece[][] currentBoard)//takes in the current position of the peice the user wants to mave and generates all possible moves
 	{
-		
+		this.value = 3;
 		this.bishopPossibleMoves = new int[27][2];//stores all moves this bishop can make
 		this.colour = currentBoard[x][y].getColour();
 		int i = 1;//start at 1 since this bishop cannot move to (x + 0,y + 0)
@@ -128,5 +126,10 @@ public class Bishop
 		
 
 		return this.bishopPossibleMoves;
+	}
+	
+	public int getValue()
+	{
+		return this.value;
 	}
 }

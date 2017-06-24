@@ -42,7 +42,7 @@ public class ChessButton extends JButton implements ActionListener
 	{	
 		this.userClick[0] = (int)e.getActionCommand().charAt(0) - 48;//stores x coordinate of user click
 		this.userClick[1] = (int)e.getActionCommand().charAt(1) - 48;//stores y coordinate of user click
-		Game.newGUI.click();
+		Game.gui.click();
 		System.out.println(this.userClick[0] + " " + userClick[1]);
 	}
 	

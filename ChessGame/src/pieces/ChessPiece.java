@@ -4,9 +4,11 @@ import board.Game;
 
 public class ChessPiece
 {
+   private int value;
    private int colour;
    private String piece;
    private int[][] possibleMoves;
+   
    
    //initalizes an instance of each chess piece
    private Knight knight = new Knight();
@@ -24,9 +26,37 @@ public class ChessPiece
    * @param colour the color of the ChessPiece. white == 0, black == 1            
    */
    public ChessPiece(String piece, int colour)
-   {
+   { 
       this.piece = piece;
       this.colour = colour;
+      if(this.piece.compareTo("Knight") == 0)
+      {
+    	  this.value = 3;
+      }
+      else if(this.piece.compareTo("Knig") == 100)
+      {
+    	  this.value = 0;
+      }
+      else if(this.piece.compareTo("Bishop") == 0)
+      {
+    	  this.value = 3;
+      }
+      else if(this.piece.compareTo("Queen") == 0)
+      {
+    	  this.value = 9;
+      }
+      else if(this.piece.compareTo("Pawn") == 0)
+      {
+    	  this.value = 1;
+      }
+      else if(this.piece.compareTo("Rook") == 0)
+      {
+    	  this.value = 5;
+      }
+      else if(this.piece.compareTo("EmptySpace") == 0)
+      {
+    	  this.value = 0;
+      }
    }
    
    /**
@@ -37,9 +67,6 @@ public class ChessPiece
    */
    public int[][] getPossibleMoves(int x, int y)
    {
- 
-      
-      
       ///// Make sure "Piece" is capitalized/////
       
       //returns all possible moves for the piece selected
@@ -88,6 +115,11 @@ public class ChessPiece
    public int getColour()
    {
       return this.colour;
+   }
+   
+   public int getValue()
+   {
+	   return this.value;
    }
    
 }

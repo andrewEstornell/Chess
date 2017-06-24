@@ -1,7 +1,5 @@
 package pieces;
 
-import board.Game;
-
 
 
 public class Knight

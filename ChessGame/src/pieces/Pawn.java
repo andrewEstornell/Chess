@@ -1,8 +1,5 @@
 package pieces;
 
-import board.ChessBoard;
-import board.Game;
-
 public class Pawn
 {
 	private int[][] pawnPossibleMoves;//stores all possible moves for this pawn
